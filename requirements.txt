@@ -1,0 +1,2 @@
+To run use this "wiki" you need:
+    - Flask 2.2.2+ installed

@@ -5,3 +5,4 @@ AnsonW -- 2022-10-31 8:50: Discussed new design doc for scenario 1
 NicholasT -- 2022-11-01 9:21: Created project repository, registered team, & added submodule
 AnsonW -- 2022-11-01 9:21: Moved files from softdev directory to repository
 AnsonW -- 2022-11-01 3:20: Uploaded team flag
+NicholasT -- 2022-11-02 12:37: Finished writing portion of design.pdf

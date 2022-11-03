@@ -7,3 +7,4 @@ AnsonW -- 2022-11-01 9:21: Moved files from softdev directory to repository
 AnsonW -- 2022-11-01 3:20: Uploaded team flag
 NicholasT -- 2022-11-02 12:37: Finished writing portion of design.pdf
 AnsonW -- 2022-11-02 3:06: Finished diagram portion of design.pdf
+NicholasT -- 2022-11-02 9:10: Fixed submodule linkage

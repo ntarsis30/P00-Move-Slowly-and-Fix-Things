@@ -11,3 +11,4 @@ NicholasT -- 2022-11-02 9:10: Fixed submodule linkage
 NicholasT -- 2022-11-02 11:30: Design Doc Updates: Replaced many instances of "database" with table, changed order of program components, 
 explained what it means to have a "valid password", simplified database organization by reducing the number of tables used, clarified story creation
 in the case of repeated story titles, and 
+AnsonW -- 2022-11-03 7:54: Updated diagrams

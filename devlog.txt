@@ -1,14 +1,65 @@
-NicholasT -- 2022-10-28 9:19: Initialized all the files in the p00 directory
-AnsonW -- 2022-10-28 9:23: Add basic components of README and requirements
-NicholasT -- 2022-10-31 8:50: Discussed new design doc for scenario 1
-AnsonW -- 2022-10-31 8:50: Discussed new design doc for scenario 1
-NicholasT -- 2022-11-01 9:21: Created project repository, registered team, & added submodule
-AnsonW -- 2022-11-01 9:21: Moved files from softdev directory to repository
-AnsonW -- 2022-11-01 3:20: Uploaded team flag
-NicholasT -- 2022-11-02 12:37: Finished writing portion of design.pdf
-AnsonW -- 2022-11-02 3:06: Finished diagram portion of design.pdf
-NicholasT -- 2022-11-02 9:10: Fixed submodule linkage
-NicholasT -- 2022-11-02 11:30: Design Doc Updates: Replaced many instances of "database" with table, changed order of program components, 
-explained what it means to have a "valid password", simplified database organization by reducing the number of tables used, clarified story creation
-in the case of repeated story titles, and 
-AnsonW -- 2022-11-03 7:54: Updated diagrams
+Flying Turtles
+Nicholas Tarsis
+Anson Wong
+pd 2
+---------------------
+Collaborative Storytelling Website 
+
+
+ ______   ______   __   __   __       ______   _______     
+/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
+\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  
+ \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\ 
+  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/ 
+   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
+    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/ 
+==============================================================
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+NicholasT -- 2022-10-28 9:19: 
+--------------------------------------------------------------
+Initialized all the files in the p00 directory
+==============================================================
+AnsonW -- 2022-10-28 9:23: 
+--------------------------------------------------------------
+Add basic components of README and requirements
+==============================================================
+NicholasT -- 2022-11-01 9:21: 
+--------------------------------------------------------------
+Created project repository, registered team, & added submodule
+==============================================================
+AnsonW -- 2022-11-01 9:21: 
+--------------------------------------------------------------
+Moved files from softdev directory to repository
+==============================================================
+AnsonW -- 2022-11-01 3:20: 
+--------------------------------------------------------------
+Uploaded team flag
+==============================================================
+NicholasT -- 2022-11-02 12:37: 
+--------------------------------------------------------------
+Finished writing portion of design.pdf
+==============================================================
+AnsonW -- 2022-11-02 3:06: 
+--------------------------------------------------------------
+Finished diagram portion of design.pdf
+==============================================================
+NicholasT -- 2022-11-02 9:10: 
+--------------------------------------------------------------
+Fixed submodule linkage
+==============================================================
+NicholasT -- 2022-11-02 11:30: 
+--------------------------------------------------------------
+Design Doc Updates: Replaced many instances of "database" with table, changed order of program components, 
+explained what it means to have a "valid password", simplified database organization by reducing the number of tables used, and clarified story creation
+in the case of repeated story titles
+==============================================================
+AnsonW -- 2022-11-03 7:54: 
+--------------------------------------------------------------
+Updated diagrams
+==============================================================
+NicholasT -- 2022-11-07 9:20:
+--------------------------------------------------------------
+Updated devlog to be in the same format as the template sent out to PMs
+==============================================================

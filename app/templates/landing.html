@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login Page</title>
+  </head>
+  <body>
+    <h1>Team Flying Turtles: Nicholas Tarsis, Anson Wong</h1>
+    <h3>You are logged in as {{username}}</h3>
+    <form action="logout" method="post">
+        <button class="button center" type="submit">Logout</button>
+    </form>
+    <br>
+    <form action="edit" method="post">
+        <button class="button center" type="submit">Edit</button>
+    </form>
+    <form action="create" method="post">
+        <button class="button center" type="submit">Create</button>
+    </form>
+    <br>
+    {% block content %}
+    <h2>{% block title %} Stories You've Edited {% endblock %}</h2>
+    {% for edi in edited %}
+        <div class='stories'>
+            <h3>{{ edi[0] }}</h3>
+            <p>{{ edi[1] }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
+  </body>
+</html>

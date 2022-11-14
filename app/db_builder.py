@@ -19,7 +19,7 @@ if not """('edited_stories',)""" in str((c.execute("SELECT name FROM sqlite_mast
 if not """('all_stories',)""" in str((c.execute("SELECT name FROM sqlite_master")).fetchall()):
     print("ga")
     c.execute("CREATE TABLE all_stories(username TEXT, story TEXT, newest TEXT)")
-#c.execute("""INSERT INTO edited_stories VALUES("test title", "Test story") """)
+#c.execute("""INSERT INTO edited_stories VALUES("test title", "Test storyTest storyTest storyTest storyTest storyTest storyTest storyTest storyTest storyTest story") """)
 #c.execute("DELETE FROM edited_stories")
 print((c.execute("SELECT name FROM sqlite_master")).fetchall())
 db.commit()

@@ -71,3 +71,11 @@ NicholasT -- 2022-11-09 9:23:
 --------------------------------------------------------------
 Updated readme, filled in requirements and made __init__.py runnable
 ==============================================================
+AnsonW -- 2022-11-12 9:22: 
+--------------------------------------------------------------
+Created & rendered landing.html- buttons for editing & creating stories and logout, shows edited stories from database
+==============================================================
+AnsonW -- 2022-11-14 8:45: 
+--------------------------------------------------------------
+Changed landing.html so edited title story was clickable and story text is only a preview
+==============================================================

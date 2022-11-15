@@ -22,8 +22,8 @@
     <h2>{% block title %} Stories You've Edited {% endblock %}</h2>
     {% for edi in edited %}
         <div class='stories'>
-            <h3>{{ edi[0] }}</h3>
-            <p>{{ edi[1] }}</p>
+            <h3><a href="https://duckduckgo.com/?q=story%3F%3F%3F&va=b&t=hr&ia=web">{{ edi[0] }}</a></h3>
+            <p>{{ edi[1][:20] }} ...</p>
         </div>
     {% endfor %}
 {% endblock %}

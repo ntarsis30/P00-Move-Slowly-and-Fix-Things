@@ -79,3 +79,7 @@ AnsonW -- 2022-11-14 8:45:
 --------------------------------------------------------------
 Changed landing.html so edited title story was clickable and story text is only a preview
 ==============================================================
+NicholasT -- 2022-11-14 11:05: 
+--------------------------------------------------------------
+Added login functionalities by storing previously made accounts and allowing for registration
+==============================================================

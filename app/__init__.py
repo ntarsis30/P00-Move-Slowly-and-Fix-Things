@@ -1,23 +1,14 @@
-#Flying Turtles | Anson Wong, Nicholas Tarsis
-#SoftDev
-#P00 -- Move Slowly and Fix Things
-#2022-11-15
-#time spent:
 from flask import *
-import os
-import sqlite3
+import os 
 import db_builder
 
-# Set the secret key to some random bytes. Keep this really secret!
-app = Flask(__name__)
+app = Flask(__name__)  
 app.secret_key = os.urandom(32)
-
-
 @app.route('/')
 def index():
     if 'username' in session:
-        return redirect("/home")
-    return render_template('login.html')
+        return redirect("/landing")
+    return render_template('login.html') 
 
 @app.route('/login', methods = ['GET','POST'])
 def login():
@@ -26,37 +17,100 @@ def login():
     if db_builder.verify(username,password):
         session['username'] = username
         session['password'] = password
-        return redirect("/home")
-    if request.form.get('submit_button') != None:
+        return redirect("/landing")
+    if request.form.get('submit_button') is not None:
         return render_template("create_account.html")
-    response = make_response(render_template('error.html',message = "credentials are not correct"))
-    return response
+    else:
+        resp = make_response(render_template('error.html',msg = "username or password is not correct"))
+        return resp
 
 @app.route('/create_account', methods=['GET', 'POST'])
 def create_account():
+    '''
     if request.method == 'POST':
-        user_info = request.form.get('username')
-        pass_info = request.form.get('password') 
-        if db_builder.account_used(user_info):
-            return "account with this username already exists"
-        else:
-            return render_template("signed_in.html")
+        session['username'] = request.form['username']
+        return redirect(url_for('index'))
+    '''
+    #print("creating account")
+    accounts = db_builder.get_table_list("User")
+    if request.method == 'POST':
+        userIn = request.form.get('username')
+        passIn = request.form.get('password') 
+        for account in accounts:
+            if account[0]==userIn:
+                return f"account with username {userIn} already exists"
+        db_builder.add_account(userIn,passIn)
+        return render_template("signed_in.html")
     return redirect(url_for('index'))
     
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('index'))
 
-"""
-@app.route('/landing', methods=['GET', 'POST'])
-def landing_page():
-    db = sqlite3.connect("database.db")
-    cur = db.cursor()
-    print("DIAG Tables")
-    print(cur.execute("SELECT name FROM sqlite_master").fetchall())
-    edited = cur.execute("SELECT * from edited_stories").fetchall()
-    print(edited)
-    db.close()
-    return render_template('landing.html', edited = edited)
-"""
+@app.route('/landing')
+def landing():
+    if 'username' not in session:
+        return redirect("/login")
+    username = session['username']
+    password = session['password']
+    if db_builder.verify(username, password):
+        viewable_pages, editable_pages = db_builder.get_user_stories(username)[0], db_builder.get_user_stories(username)[1]
+        print("viewable pages:" + str(viewable_pages))
+        return render_template("landing.html", username = username,
+        viewable_stories = viewable_pages, editable_stories = editable_pages)
 
-if __name__ == '__main__':
-    app.debug = True
+@app.route('/view')
+def view():
+    if verify_session():
+        storyname = request.args.get("storyName")
+        storyInfo = db_builder.get_story_info(storyname)
+        if storyInfo == -1:
+            return render_template("error.html", msg="Story is Not in Database")
+        fullText = storyInfo[0]
+        contributors = storyInfo[2]
+        if session['username'] in contributors.split(','):
+            return render_template("story_template.html",fullText = fullText,storyname = storyname)
+    return render_template("error.html", msg="session could not be verified")
+@app.route('/edit')
+def edit():
+    if verify_session():
+        storyName = request.args.get("storyName")
+        storyInfo = db_builder.get_story_info(storyName)
+        lastAdded = storyInfo[1]
+        contributors = storyInfo[2].split(",")
+        if session['username'] not in contributors:
+            return render_template('edit.html', storyName = storyName, storyText = lastAdded)
+        return render_template("error.html", msg= "user has already edited story")
+    return render_template("error.html", msg="session could not be verified")
+    
+@app.route("/make_edit", methods = ['POST'])
+def make_edit():
+    if verify_session():
+        storyName = request.form.get("storyName")
+        newAddition = request.form.get("newText")
+        db_builder.edit_story(storyName, newAddition, session['username'])
+        return redirect("/")
+    return render_template("error.html", msg = "session could not be verified")
+
+def verify_session():
+    return 'username' in session and 'password' in session and db_builder.verify(session['username'], session['password'])
+
+@app.route('/create_story', methods=['GET', 'POST'])
+def create_story():
+    if verify_session():
+        username = session['username']
+        storyName = request.form.get('storyName')
+        newText = request.form.get('newText')
+        if db_builder.add_story(storyName,newText,username) != -1:
+            return render_template("create.html",storyName = storyName)
+        else:
+            if db_builder.used(storyName,"Story"):
+                return "Story Added"
+            return "Story Not Added"
+    return render_template("error.html", message="session could not be verified")
+
+if __name__ == "__main__":
+    app.debug = True 
+    print(db_builder.get_table_list("Story"))
     app.run()

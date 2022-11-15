@@ -83,3 +83,7 @@ NicholasT -- 2022-11-14 11:05:
 --------------------------------------------------------------
 Added login functionalities by storing previously made accounts and allowing for registration
 ==============================================================
+NicholasT -- 2022-11-14 2:05: 
+--------------------------------------------------------------
+Finished changing site to allow for adding and editing stories
+==============================================================

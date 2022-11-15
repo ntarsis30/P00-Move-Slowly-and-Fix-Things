@@ -76,8 +76,7 @@ def edit_story(name, text, editor):
     else:
         return -1
 def get_user_stories(username):
-    view_stories = []
-    edit_stories = []
+    view_stories,edit_stories = [],[]
     stories = get_table_list("Story")
     for story in stories:
         editors = story[3].split(",")

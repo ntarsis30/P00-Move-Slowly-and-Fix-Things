@@ -20,18 +20,11 @@ def login():
         return redirect("/landing")
     if request.form.get('submit_button') is not None:
         return render_template("create_account.html")
-    else:
-        resp = make_response(render_template('error.html',msg = "username or password is not correct"))
-        return resp
+    response = make_response(render_template('error.html',msg = "username or password is not correct"))
+    return response
 
 @app.route('/create_account', methods=['GET', 'POST'])
 def create_account():
-    '''
-    if request.method == 'POST':
-        session['username'] = request.form['username']
-        return redirect(url_for('index'))
-    '''
-    #print("creating account")
     accounts = db_builder.get_table_list("User")
     if request.method == 'POST':
         userIn = request.form.get('username')
@@ -55,10 +48,9 @@ def landing():
     username = session['username']
     password = session['password']
     if db_builder.verify(username, password):
-        viewable_pages, editable_pages = db_builder.get_user_stories(username)[0], db_builder.get_user_stories(username)[1]
-        print("viewable pages:" + str(viewable_pages))
+        view_pages, edit_pages = db_builder.get_user_stories(username)[0], db_builder.get_user_stories(username)[1]
         return render_template("landing.html", username = username,
-        viewable_stories = viewable_pages, editable_stories = editable_pages)
+        viewable_stories = view_pages, editable_stories = edit_pages)
 
 @app.route('/view')
 def view():
@@ -102,12 +94,10 @@ def create_story():
         username = session['username']
         storyName = request.form.get('storyName')
         newText = request.form.get('newText')
-        if db_builder.add_story(storyName,newText,username) != -1:
+        if not db_builder.used(storyName,"Story"):
+            db_builder.add_story(storyName, newText, username)
             return render_template("create.html",storyName = storyName)
-        else:
-            if db_builder.used(storyName,"Story"):
-                return "Story Added"
-            return "Story Not Added"
+        return "Story Not Added"
     return render_template("error.html", message="session could not be verified")
 
 if __name__ == "__main__":

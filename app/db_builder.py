@@ -73,8 +73,7 @@ def edit_story(name, text, editor):
         old_text = story_info[0] + text 
         editors = editor + "," + story_info[2] 
         data_query(f'''UPDATE Story SET full = ?, last = ?, editors = ? WHERE name = ? ''', (old_text, text, editors, name))
-    else:
-        return -1
+    return -1    
 def get_user_stories(username):
     view_stories,edit_stories = [],[]
     stories = get_table_list("Story")
